@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+export default class App extends Component {
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  state={
+
+
+  }
+
+
+  render(){
+    return(
+        console.log("it's working")
+
+
+
+    )
+  }
 }
 
-export default App;
+
