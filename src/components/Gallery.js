@@ -8,7 +8,7 @@ const Gallery = (props) => {
     let pictures;
 
     if(results.length > 0) {
-        pictures = results.map( pic => <GalleryItem farm={results.farm} server={results.server} id={results.id} secret={results.secret} />)
+        pictures = results.map( pic => <GalleryItem info={`https://farm${results.farm}.staticflickr.com/${results.server}/${results.id}_${results.secret}.jpg alt=""`} />)
     }else {
         pictures = <NoResultsFound />
     }
