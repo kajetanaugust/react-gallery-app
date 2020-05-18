@@ -46,8 +46,9 @@ export default class App extends Component {
             <SearchBar searchFunction={this.searchFunction} />
             <Nav />
             <div className="photo-container">
-                <Gallery data={this.state.searchedImages}/>
-
+                {
+                    (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>
+                }
             </div>
             {/*<NoResultsFound />*/}
             {/*<PageNotFound />*/}

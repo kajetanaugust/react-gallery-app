@@ -4,7 +4,6 @@ import NoResultsFound from './NoResultsFound';
 
 const Gallery = (props) => {
     const results = props.data;
-    console.log(results.photo.farm)
     let pictures;
 
     if(results.length > 0) {
