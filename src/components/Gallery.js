@@ -4,13 +4,14 @@ import NoResultsFound from './NoResultsFound';
 
 const Gallery = (props) => {
     const results = props.data;
+    console.log(results)
     let pictures;
 
-    // if(results.length > 0) {
+    if(results.length > 0) {
         pictures = results.map( pic => <GalleryItem farm={results.farm} server={results.server} id={results.id} secret={results.secret} />)
-    // }else {
-    //     pictures = <NoResultsFound />
-    // }
+    }else {
+        pictures = <NoResultsFound />
+    }
 
     return(
         <ul>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import apiKey from './config';
 import Nav from './components/Nav.js'
@@ -29,24 +30,14 @@ export default class App extends Component {
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
-
+                this.setState({
+                    searchedImages: response.data.photos.photo,
+                    isLoading: false
+                })
             })
             .catch(error => {
                 console.log('Error fetching and parsing data', error);
             });
-
-        // fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
-        //     .then(response => response.json())
-        //     .then(responseData => console.log(responseData))
-        //     .then(responseData => {
-        //         this.setState({
-        //             searchedImages: responseData.data.photos.photo,
-        //             isLoading: false
-        //         })
-        //     })
-        //     .catch(error => {
-        //         console.log('Error fetching and parsing data', error)
-        //     });
     }
 
   render(){
