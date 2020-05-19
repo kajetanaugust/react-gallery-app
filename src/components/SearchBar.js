@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Nav from './Nav';
 
 export default class SearchBar extends Component {
 
@@ -35,8 +36,6 @@ export default class SearchBar extends Component {
                         <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
                 </button>
-
-
             </form>
 
         )

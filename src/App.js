@@ -23,7 +23,7 @@ export default class App extends Component {
         this.searchFunction()
     }
 
-    searchFunction = (query = 'treehouse') => {
+    searchFunction = (query = 'cat') => {
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
@@ -39,16 +39,14 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <SearchBar onSearch={this.searchFunction}/>
-                <Nav/>
+                <SearchBar onSearch={this.searchFunction} />
+                <Nav onSearch={this.searchFunction} />
                 <div className="photo-container">
+                    <h2>Results</h2>
                     {
                         (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>
                     }
                 </div>
-                {/*<NoResultsFound />*/}
-                {/*<PageNotFound />*/}
-
             </div>
 
 

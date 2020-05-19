@@ -5,7 +5,7 @@ import NoResultsFound from './NoResultsFound';
 const Gallery = (props) => {
     const results = props.data;
     let pictures;
-    console.log(results)
+
 
     if (results.length > 0) {
         pictures = results.map(result => <GalleryItem
@@ -14,7 +14,7 @@ const Gallery = (props) => {
     } else {
         pictures = <NoResultsFound/>
     }
-    console.log(pictures)
+
     return (
 
         <ul>
