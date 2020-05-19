@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 
 import apiKey from './config';
@@ -12,22 +12,18 @@ import Gallery from './components/Gallery';
 
 export default class App extends Component {
 
-  state={
-    searchedImages: [],
-    isLoading: true,
-    key: apiKey
-  }
-
+    state = {
+        searchedImages: [],
+        isLoading: true,
+        key: apiKey
+    }
 
 
     componentDidMount() {
         this.searchFunction()
-        console.log(this.state.key)
     }
 
     searchFunction = (query = 'treehouse') => {
-      console.log(this.state.key)
-
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
@@ -40,26 +36,24 @@ export default class App extends Component {
             });
     }
 
-  render(){
-    return(
-        <div>
-            <SearchBar searchFunction={this.searchFunction} />
-            <Nav />
-            <div className="photo-container">
-                {
-                    (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>
-                }
+    render() {
+        return (
+            <div>
+                <SearchBar onSearch={this.searchFunction}/>
+                <Nav/>
+                <div className="photo-container">
+                    {
+                        (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>
+                    }
+                </div>
+                {/*<NoResultsFound />*/}
+                {/*<PageNotFound />*/}
+
             </div>
-            {/*<NoResultsFound />*/}
-            {/*<PageNotFound />*/}
-
-        </div>
 
 
-
-
-    )
-  }
+        )
+    }
 }
 
 
