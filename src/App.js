@@ -4,11 +4,8 @@ import axios from 'axios';
 import apiKey from './config';
 import Nav from './components/Nav.js'
 import SearchBar from './components/SearchBar';
-import NoResultsFound from './components/NoResultsFound';
 import PageNotFound from './components/PageNotFound';
 import Gallery from './components/Gallery';
-
-// const key = apiKey;
 
 export default class App extends Component {
 
