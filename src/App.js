@@ -48,7 +48,8 @@ export default class App extends Component {
                 <div className={"container"}>
                     <Header onSearch={this.searchFunction} history={this.props.history}/>
                     <Switch>
-                        <Route exact path="/" render={ () => (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>} />
+                        <Route exact path="/"  render={ () => <Redirect to={`/search/cat`} /> } />
+                        <Route path={`search/${this.state.mainQuery}`} render={ () => (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>} />
                         <Route component={PageNotFound} />
                     </Switch>
                 </div>
