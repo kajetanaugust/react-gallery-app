@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect
+}from 'react-router-dom';
 
 import apiKey from './config';
-import Nav from './components/Nav.js'
-import SearchBar from './components/SearchBar';
 import PageNotFound from './components/PageNotFound';
 import Gallery from './components/Gallery';
+import Header from './components/Header';
+
 
 export default class App extends Component {
 
     state = {
         searchedImages: [],
         isLoading: true,
-        key: apiKey
+        key: apiKey,
+        mainQuery: ''
     }
 
 
@@ -25,7 +32,9 @@ export default class App extends Component {
             .then(response => {
                 this.setState({
                     searchedImages: response.data.photos.photo,
-                    isLoading: false
+                    isLoading: false,
+                    mainQuery: query
+
                 })
             })
             .catch(error => {
@@ -35,17 +44,15 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
-                <SearchBar onSearch={this.searchFunction} />
-                <Nav onSearch={this.searchFunction} />
-                <div className="photo-container">
-                    <h2>Results</h2>
-                    {
-                        (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>
-                    }
+            <Router>
+                <div className={"container"}>
+                    <Header onSearch={this.searchFunction} history={this.props.history}/>
+                    <Switch>
+                        <Route exact path="/" render={ () => (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>} />
+                        <Route component={PageNotFound} />
+                    </Switch>
                 </div>
-            </div>
-
+            </Router>
 
         )
     }

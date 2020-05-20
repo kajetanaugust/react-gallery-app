@@ -11,9 +11,12 @@ export default class SearchBar extends Component {
         this.setState({searchPhrase: e.target.value});
     }
 
-    searchButtonClick = e => {
+    searchButtonClick = (e, props) => {
         e.preventDefault();
         this.props.onSearch(this.query.value);
+        let phraseForUrl = this.query.value;
+        // let path = `/${phraseForUrl}`;
+        // this.props.history.push(path);
         e.currentTarget.reset();
     }
 

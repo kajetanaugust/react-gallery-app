@@ -4,6 +4,7 @@ import NoResultsFound from './NoResultsFound';
 
 const Gallery = (props) => {
     const results = props.data;
+    console.log(results)
     let pictures;
 
 
@@ -16,10 +17,13 @@ const Gallery = (props) => {
     }
 
     return (
+        <div className="photo-container">
+            <h2>Results</h2>
+            <ul>
+                {pictures}
+            </ul>
+        </div>
 
-        <ul>
-            {pictures}
-        </ul>
 
     )
 }
