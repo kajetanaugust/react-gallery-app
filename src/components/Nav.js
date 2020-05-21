@@ -7,6 +7,7 @@ export default class Nav extends Component {
 
         const buttonClick = (phrase, props) => {
             this.props.onSearch(phrase);
+            this.props.urlChange(phrase);
         }
 
         return (
@@ -20,25 +21,3 @@ export default class Nav extends Component {
         )
     }
 }
-
-
-
-
-// import React from 'react';
-//
-// const Nav = (props, e) => {
-//
-//     return (
-//         <nav className={'main-nav'}>
-//             <ul>
-//                 <li><a onClick={console.log(e.target)} href="#">Cats</a></li>
-//                 <li><a href="#">Dogs</a></li>
-//                 <li><a href="#">Treehouse</a></li>
-//             </ul>
-//         </nav>
-//     )
-// }
-//
-//
-// export default Nav;
-

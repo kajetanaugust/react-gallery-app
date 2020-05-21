@@ -1,17 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 import Nav from './Nav';
 import SearchBar from './SearchBar';
 
 
-const Header =(props) => {
-        return (
-            <div>
-                <SearchBar onSearch={props.onSearch} history={props.history} />
-                <Nav onSearch={props.onSearch} />
-            </div>
-        )
+const Header = (props) => {
+
+    const urlChange = (phrase) => {
+        props.history.push(`/search/${phrase}`);
+    }
+    return (
+        <div>
+            <SearchBar onSearch={props.onSearch} history={props.history} urlChange={urlChange}/>
+            <Nav onSearch={props.onSearch} urlChange={urlChange}/>
+        </div>
+    )
 
 }
 
-export default Header
+export default withRouter(Header)

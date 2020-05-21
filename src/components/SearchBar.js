@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Nav from './Nav';
+import {withRouter} from 'react-router-dom';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
 
     state = {
         searchPhrase: ''
@@ -14,9 +14,8 @@ export default class SearchBar extends Component {
     searchButtonClick = (e, props) => {
         e.preventDefault();
         this.props.onSearch(this.query.value);
-        let phraseForUrl = this.query.value;
-        // let path = `/${phraseForUrl}`;
-        // this.props.history.push(path);
+        this.props.urlChange(this.query.value);
+        // this.props.history.push(`/search/${this.query.value}`)
         e.currentTarget.reset();
     }
 
@@ -44,3 +43,5 @@ export default class SearchBar extends Component {
         )
     }
 }
+
+export default withRouter(SearchBar);

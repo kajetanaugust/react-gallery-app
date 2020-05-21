@@ -5,7 +5,7 @@ import {
     Route,
     Switch,
     Redirect
-}from 'react-router-dom';
+} from 'react-router-dom';
 
 import apiKey from './config';
 import PageNotFound from './components/PageNotFound';
@@ -19,22 +19,23 @@ export default class App extends Component {
         searchedImages: [],
         isLoading: true,
         key: apiKey,
-        mainQuery: ''
+        mainQuery: 'border collie'
     }
 
 
     componentDidMount() {
         this.searchFunction()
+        this.setState({mainQuery: this.query})
     }
 
-    searchFunction = (query = 'cat') => {
+
+    searchFunction = (query = this.state.mainQuery) => {
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
                     searchedImages: response.data.photos.photo,
                     isLoading: false,
-                    mainQuery: query
-
+                    mainQuery: this.query
                 })
             })
             .catch(error => {
@@ -45,12 +46,13 @@ export default class App extends Component {
     render() {
         return (
             <Router>
-                <div className={"container"}>
-                    <Header onSearch={this.searchFunction} history={this.props.history}/>
+                <div className={'container'}>
+                    <Header onSearch={this.searchFunction} history={this.props.history} urlChange={this.urlChange}/>
                     <Switch>
-                        <Route exact path="/"  render={ () => <Redirect to={`/search/cat`} /> } />
-                        <Route path={`search/${this.state.mainQuery}`} render={ () => (this.state.isLoading) ? <p>loading...</p> : <Gallery data={this.state.searchedImages}/>} />
-                        <Route component={PageNotFound} />
+                        <Route exact path="/" render={() => <Redirect to={`/search/${this.state.mainQuery}`}/>}/>
+                        <Route exact path={'/search/:query'} render={() => (this.state.isLoading) ? <p>loading...</p> :
+                            <Gallery data={this.state.searchedImages}/>}/>
+                        <Route component={PageNotFound}/>
                     </Switch>
                 </div>
             </Router>
