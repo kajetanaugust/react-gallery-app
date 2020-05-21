@@ -51,7 +51,7 @@ export default class App extends Component {
                     <Switch>
                         <Route exact path="/" render={() => <Redirect to={`/search/${this.state.mainQuery}`}/>}/>
                         <Route exact path={'/search/:query'} render={() => (this.state.isLoading) ? <p>loading...</p> :
-                            <Gallery data={this.state.searchedImages}/>}/>
+                            <Gallery data={this.state.searchedImages} />}/>
                         <Route component={PageNotFound}/>
                     </Switch>
                 </div>

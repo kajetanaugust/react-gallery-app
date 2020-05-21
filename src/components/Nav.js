@@ -13,9 +13,9 @@ export default class Nav extends Component {
         return (
             <nav className={'main-nav'}>
                 <ul>
-                    <li><a onClick={() => buttonClick('cats')} href="#">Cats</a></li>
-                    <li><a onClick={() => buttonClick('dogs')} href="#">Dogs</a></li>
-                    <li><a onClick={() => buttonClick('treehouse')} href="#">Treehouse</a></li>
+                    <li><a onClick={() => buttonClick('cats')}>Cats</a></li>
+                    <li><a onClick={() => buttonClick('dogs')}>Dogs</a></li>
+                    <li><a onClick={() => buttonClick('treehouse')}>Treehouse</a></li>
                 </ul>
             </nav>
         )
