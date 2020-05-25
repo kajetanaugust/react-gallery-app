@@ -41,6 +41,7 @@ export default class App extends Component {
         return (
             <Router>
                 <div className={'container'}>
+                    <h1>PhotoLookup</h1>
                     <Nav onSearch={this.searchFunction} />
                     <SearchBar onSearch={this.searchFunction} history={this.history} />
                     <Switch>

@@ -4,8 +4,15 @@ body {
   color: #3f4850;
 }
 
+h1 {
+  color: #438bbd;
+  font-size: 2.5em;
+  margin-top:0;
+  padding-top:0;
+}
+
 h2 {
-  font-size: 2em;
+  font-size: 1.7em;
   margin: 52px 0 40px;
   text-transform: capitalize;
 }
