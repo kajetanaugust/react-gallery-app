@@ -11,9 +11,7 @@ const Nav = () => {
                     <li><NavLink to={`/search/forest`}>Forest</NavLink></li>
                 </ul>
             </nav>
-
         )
 }
-
 
 export default Nav;
