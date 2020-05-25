@@ -1,15 +1,33 @@
+// Imports
+
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 
+/*
+Class component for creating searchbar and adding functionality
+*/
+
 class SearchBar extends Component {
+
+    // Component State
 
     state = {
         searchPhrase: ''
     }
 
+    // Function for changing state content to the value of search bar
+
     searchPhraseChange = e => {
         this.setState({searchPhrase: e.target.value});
     }
+
+    /*
+     This function:
+     prevents default behaviour of submit button,
+     sets url value to the searched phrase,
+     passes search phrase to the main search function in App.js,
+     resets the search field
+    */
 
     searchButtonClick = (e, props) => {
         e.preventDefault();
@@ -19,7 +37,7 @@ class SearchBar extends Component {
         e.currentTarget.reset();
     }
 
-
+    // Creating the search form and passing props to the input field
     render() {
         return (
             <form className={'search-form'} onSubmit={this.searchButtonClick}>
@@ -43,5 +61,7 @@ class SearchBar extends Component {
         )
     }
 }
+
+// Export
 
 export default withRouter(SearchBar);

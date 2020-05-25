@@ -1,4 +1,11 @@
+// Imports
+
 import React from 'react';
+
+/*
+Function for rendering individual list items
+containing image with src and alt attributes
+*/
 
 const GalleryItem = (props) => {
     return (
@@ -7,5 +14,7 @@ const GalleryItem = (props) => {
         </li>
     )
 }
+
+// Export
 
 export default GalleryItem;

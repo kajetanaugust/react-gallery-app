@@ -1,4 +1,10 @@
+// Imports
+
 import React from 'react';
+
+/*
+ Function for displaying No Results found error
+*/
 
 const NoResultsFound = () => {
     return (
@@ -8,5 +14,7 @@ const NoResultsFound = () => {
         </li>
     )
 }
+
+// Export
 
 export default NoResultsFound;

@@ -1,3 +1,5 @@
+// Imports
+
 import React, {Component} from 'react';
 import GalleryItem from './GalleryItem';
 import NoResultsFound from './NoResultsFound';
@@ -47,5 +49,6 @@ class Gallery extends Component {
     }
 }
 
+// Export
 
 export default Gallery;

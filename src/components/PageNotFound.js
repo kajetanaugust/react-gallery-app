@@ -1,6 +1,10 @@
+// Imports
+
 import React from 'react';
 
-
+/*
+ Function for displaying Page Not Found (404) error
+*/
 const PageNotFound = () => {
     return (
         <ul>
@@ -11,5 +15,7 @@ const PageNotFound = () => {
         </ul>
     )
 }
+
+// Export
 
 export default PageNotFound;
