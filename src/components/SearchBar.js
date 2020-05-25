@@ -13,9 +13,9 @@ class SearchBar extends Component {
 
     searchButtonClick = (e, props) => {
         e.preventDefault();
-        this.props.onSearch(this.query.value);
-        this.props.urlChange(this.query.value);
-        // this.props.history.push(`/search/${this.query.value}`)
+        let query = this.query.value;
+        this.props.history.push(`/search/${query}`)
+        this.props.onSearch(query);
         e.currentTarget.reset();
     }
 

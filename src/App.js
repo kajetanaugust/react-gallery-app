@@ -10,7 +10,8 @@ import {
 import apiKey from './config';
 import PageNotFound from './components/PageNotFound';
 import Gallery from './components/Gallery';
-import Header from './components/Header';
+import Nav from './components/Nav';
+import SearchBar from './components/SearchBar';
 
 
 export default class App extends Component {
@@ -19,17 +20,14 @@ export default class App extends Component {
         searchedImages: [],
         isLoading: true,
         key: apiKey,
-        mainQuery: 'border collie'
     }
 
 
     componentDidMount() {
         this.searchFunction()
-        this.setState({mainQuery: this.query})
     }
 
-
-    searchFunction = (query = this.state.mainQuery) => {
+    searchFunction = (query = 'Border Collie') => {
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
@@ -47,9 +45,10 @@ export default class App extends Component {
         return (
             <Router>
                 <div className={'container'}>
-                    <Header onSearch={this.searchFunction} history={this.props.history} urlChange={this.urlChange}/>
+                    <Nav onSearch={this.searchFunction} />
+                    <SearchBar onSearch={this.searchFunction} history={this.history} />
                     <Switch>
-                        <Route exact path="/" render={() => <Redirect to={`/search/${this.state.mainQuery}`}/>}/>
+                        <Route exact path="/" render={() => <Redirect to={`/search/border&#32;collie`}/>}/>
                         <Route exact path={'/search/:query'} render={() => (this.state.isLoading) ? <p>loading...</p> :
                             <Gallery data={this.state.searchedImages} />}/>
                         <Route component={PageNotFound}/>
