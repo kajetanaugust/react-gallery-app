@@ -19,21 +19,17 @@ export default class App extends Component {
     state = {
         searchedImages: [],
         isLoading: true,
-        key: apiKey,
+        key: apiKey
     }
 
-
-    componentDidMount() {
-        this.searchFunction()
-    }
-
-    searchFunction = (query = 'Border Collie') => {
+    searchFunction = (query = 'mountains') => {
+        this.setState({isLoading:true, images:[]})
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this.state.key}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
             .then(response => {
                 this.setState({
                     searchedImages: response.data.photos.photo,
                     isLoading: false,
-                    mainQuery: this.query
+                    query: query
                 })
             })
             .catch(error => {
@@ -48,9 +44,15 @@ export default class App extends Component {
                     <Nav onSearch={this.searchFunction} />
                     <SearchBar onSearch={this.searchFunction} history={this.history} />
                     <Switch>
-                        <Route exact path="/" render={() => <Redirect to={`/search/border&#32;collie`}/>}/>
-                        <Route exact path={'/search/:query'} render={() => (this.state.isLoading) ? <p>loading...</p> :
-                            <Gallery data={this.state.searchedImages} />}/>
+                        <Route exact path="/" render={() => <Redirect to={`/search/mountains`}/>}/>
+                        <Route exact path={'/search/:query'} render={({match}) =>
+                            <Gallery
+                                routeMatch={match} data={this.state.searchedImages}
+                                queryData={this.state.query}
+                                handleSearch={this.searchFunction}
+                                loadingState={this.state.isLoading}
+                            />}
+                        />
                         <Route component={PageNotFound}/>
                     </Switch>
                 </div>

@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-
-const Nav = (props) => {
+const Nav = () => {
 
         return (
             <nav className={'main-nav'}>
                 <ul>
-                    <li><NavLink to={`/search/cats`}>Cats</NavLink></li>
-                    <li><NavLink to={`/search/dogs`}>Dogs</NavLink></li>
-                    <li><NavLink to={`/search/treehouse`}>Treehouse</NavLink></li>
+                    <li><NavLink to={`/search/Lake`}>Lake</NavLink></li>
+                    <li><NavLink to={`/search/mountains`}>Mountains</NavLink></li>
+                    <li><NavLink to={`/search/forest`}>Forest</NavLink></li>
                 </ul>
             </nav>
 

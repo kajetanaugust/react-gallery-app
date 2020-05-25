@@ -1,31 +1,50 @@
-import React from 'react';
+import React, {Component} from 'react';
 import GalleryItem from './GalleryItem';
 import NoResultsFound from './NoResultsFound';
 
-const Gallery = (props) => {
-    const results = props.data;
-    console.log(results)
-    let pictures;
+class Gallery extends Component {
 
-
-    if (results.length > 0) {
-        pictures = results.map(result => <GalleryItem
-            url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}.jpg`}
-            key={result.id}/>)
-    } else {
-        pictures = <NoResultsFound/>
+    componentDidMount() {
+       this.props.handleSearch(this.props.routeMatch.params.query);
     }
 
-    return (
-        <div className="photo-container">
-            <h2>Results</h2>
-            <ul>
-                {pictures}
-            </ul>
-        </div>
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.routeMatch.params.query !== prevProps.routeMatch.params.query) {
+            this.props.handleSearch(this.props.routeMatch.params.query)
+        }
+    }
+
+    render() {
+        const results = this.props.data;
+        console.log(results)
+        let pictures;
 
 
-    )
+        if (results.length > 0) {
+            pictures = results.map(result => <GalleryItem
+                url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}.jpg`}
+                key={result.id} alt={result.title}/>)
+        } else {
+            pictures = <NoResultsFound/>
+        }
+
+        if(this.props.loadingState){
+           pictures = <li className='not-found'><p>Loading...</p></li>;
+        }
+
+        return (
+
+
+            <div className="photo-container">
+                <h2>Results</h2>
+                <ul>
+                        {pictures}
+                </ul>
+            </div>
+
+
+        )
+    }
 }
 
 
