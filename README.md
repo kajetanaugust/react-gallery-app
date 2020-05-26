@@ -34,7 +34,7 @@ tags: Bird, Cat, Horse, Cow from which the user can choose or the user can reque
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 It uses [React Router library]( https://reacttraining.com/react-router/) for setting routes, 
 [axios]((https://github.com/axios/axios)) for fetching data and starting 
-files from [Treehouse](https://teamtreehouse.com), Readme credits goes to [Monika Frankowska][https://github.com/monifra] .   
+files from [Treehouse](https://teamtreehouse.com), Readme credits goes to [Monika Frankowska](https://github.com/monifra) .   
 
 
 ## Available Scripts
