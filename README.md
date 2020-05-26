@@ -2,11 +2,12 @@
 On each request, the app displays 24 images fetched from [flickr API](https://www.flickr.com/).<br/>  The user can search for custom phrases using the searchbar or choose one of the four predefined search phrases (Lake, Mountains, Forest or Sea) .      
 
 ### How does it work
-- The user can choose the default tags or write their own search tag in a search bar
-- Search will also work when the user change query parameter in a url
-- If the user tries to search non existing topics the app will display Page Not Found message
-- Page has three routes, main that redirects to Mountains tag, dynamic search route that changes depending on query-parameter and 404 route that shows user friendly message when the user try to visit non existing route 
-- The page can be navigated by the use of back and forward browser navs
+- The user can choose the default tags or write their own search tag in a search bar,
+- Search will also work when the user change query parameter in an url string,
+- If the user tries to search non existing topics the app will display No Results Found message,
+- If the url match is not found the app will display Page Not Found message,
+- Page has three routes, main that redirects to Mountains tag, dynamic search route that changes depending on query-parameter and 404 route that shows user friendly message when the user try to visit non existing route, 
+- The user can navigate backwards and forwards by clicking the browser nav buttons.
 
 ### Setup
 
