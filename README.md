@@ -1,18 +1,12 @@
-## Just Gallery App
-App displays for a user 24 images fetched from [flickr API](https://www.flickr.com/).<br/> There are four default
-tags: Bird, Cat, Horse, Cow from which the user can choose or the user can request their own theme of images.      
+## PhotoLookup App
+On each request, the app displays 24 images fetched from [flickr API](https://www.flickr.com/).<br/>  The user can search for custom phrases using the searchbar or choose one of the four predefined search phrases (Lake, Mountains, Forest or Sea) .      
 
 ### How does it work
 - The user can choose the default tags or write their own search tag in a search bar
 - Search will also work when the user change query parameter in a url
-- If the user tries to search non existing topics the app displays Not Found message
-- Page has three routes, main that redirects to Bird tag, dynamic search route that changes depending on query-parameter and 404 route that shows user friendly message when the user try to visit non existing route 
-- The page can be navigate by the use of back and forward browser navs
-
-### Styling 
-- I've decided for a simple modern layout with images displayed in a squares
-- Main interactive elements are grouped at the top of the page: search bar, default images tags and a short friendly information about what tag is displaying now 
-- Page has some modern styling solution such as nice button hover transition   
+- If the user tries to search non existing topics the app will display Page Not Found message
+- Page has three routes, main that redirects to Mountains tag, dynamic search route that changes depending on query-parameter and 404 route that shows user friendly message when the user try to visit non existing route 
+- The page can be navigated by the use of back and forward browser navs
 
 ### Setup
 
